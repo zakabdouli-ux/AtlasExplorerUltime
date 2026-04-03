@@ -159,19 +159,29 @@ fetch('./countries.geo.json')
         weight: 2
       },
 
-      onEachFeature: function(feature, layer) {
+ onEachFeature: function(feature, layer){
 
-        layer.on("mouseover", () => {
-          layer.setStyle({ fillOpacity: 0.7 });
-        });
+layer.on("mouseover", () => {
+layer.setStyle({ fillOpacity: 0.7 });
+});
 
-        layer.on("mouseout", () => {
-          layer.setStyle({ fillOpacity: 0.35 });
-        });
+layer.on("mouseout", () => {
+layer.setStyle({ fillOpacity: 0.35 });
+});
 
-        layer.on("click", () => {
-          const name = feature.properties.ADMIN || feature.properties.name;
-          showCountry(name);
+layer.on("click", () => {
+
+const mapping = {
+"Morocco": "Maroc",
+"Algeria": "Algérie",
+"Tunisia": "Tunisie"
+};
+
+const name = mapping[feature.properties.ADMIN];
+
+if(name){
+showCountry(name);
+
         });
 
       }
