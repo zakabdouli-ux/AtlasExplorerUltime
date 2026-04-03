@@ -177,9 +177,10 @@ const mapping = {
 "Tunisia": "Tunisie"
 };
 
-const name = mapping[feature.properties.ADMIN];
+const rawName = feature.properties.ADMIN || feature.properties.name;
+const name = mapping[rawName];
 
-if(name){
+    if(name){
 showCountry(name);
 
         });
