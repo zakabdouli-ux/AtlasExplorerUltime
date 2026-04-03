@@ -20,7 +20,7 @@ header {
     flex: 2;
     height: 100%;
     min-height: 500px;
-    background: red; /* TEST */
+    
 }
 
 #sidebar {
