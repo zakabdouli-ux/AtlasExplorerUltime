@@ -21,6 +21,136 @@ const tunisie = L.polygon([
 ]).addTo(map);
 
 // ================= DONNÉES =================
+
+const countries = {
+
+"Maroc":{
+name:"Maroc 🇲🇦",
+image:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+desc:"Le Maroc est une destination incontournable d’Afrique du Nord, réputée pour sa richesse culturelle, ses paysages variés et son hospitalité. Entre les médinas historiques, les montagnes de l’Atlas, les plages atlantiques et les dunes du Sahara, le pays offre une expérience unique mêlant tradition et modernité.",
+
+infos:`
+📍 Capitale : Rabat  
+👥 Population : ~37 millions  
+💰 Monnaie : Dirham marocain (MAD)  
+🗣️ Langues : Arabe, Français (très utilisé)  
+🕌 Religion : Islam (majoritaire)  
+
+☀️ Climat :
+- Nord : méditerranéen  
+- Sud : désertique  
+- Étés chauds, hivers doux  
+
+📅 Meilleure période :
+✔ Mars à mai (printemps)  
+✔ Septembre à novembre  
+
+✈️ Accès :
+- Aéroports principaux : Casablanca, Marrakech  
+- Bon réseau de transport (train + bus)  
+
+🍽️ Gastronomie :
+- Couscous  
+- Tajine  
+- Pastilla  
+
+🎯 À faire absolument :
+- Explorer Marrakech (souks, place Jemaa el-Fna)  
+- Visiter Fès et sa médina  
+- Dormir dans le désert du Sahara  
+- Découvrir Chefchaouen (ville bleue)  
+
+⚠️ Conseils :
+- Négocier dans les souks  
+- Respecter les coutumes locales  
+`
+},
+
+"Algérie":{
+name:"Algérie 🇩🇿",
+image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+desc:"L’Algérie est le plus grand pays d’Afrique et offre une richesse naturelle exceptionnelle. Entre la mer Méditerranée, les montagnes et l’immensité du Sahara, elle propose une expérience authentique encore préservée du tourisme de masse.",
+
+infos:`
+📍 Capitale : Alger  
+👥 Population : ~45 millions  
+💰 Monnaie : Dinar algérien (DZD)  
+🗣️ Langues : Arabe, Français  
+🕌 Religion : Islam (majoritaire)  
+
+☀️ Climat :
+- Nord : méditerranéen  
+- Sud : désertique (Sahara)  
+
+📅 Meilleure période :
+✔ Avril à juin  
+✔ Septembre à novembre  
+
+✈️ Accès :
+- Aéroport d’Alger principal  
+- Réseau routier important  
+
+🍽️ Gastronomie :
+- Couscous  
+- Chorba  
+- Rechta  
+
+🎯 À faire absolument :
+- Visiter la Casbah d’Alger  
+- Découvrir Constantine (ponts spectaculaires)  
+- Explorer le désert du Sahara  
+- Profiter des plages méditerranéennes  
+
+⚠️ Conseils :
+- Préparer son voyage à l’avance  
+- Respecter les traditions locales  
+`
+},
+
+"Tunisie":{
+name:"Tunisie 🇹🇳",
+image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+desc:"La Tunisie est une destination idéale pour combiner détente et découverte. Avec ses plages, ses médinas, ses sites antiques comme Carthage et son climat ensoleillé, elle attire des visiteurs du monde entier.",
+
+infos:`
+📍 Capitale : Tunis  
+👥 Population : ~12 millions  
+💰 Monnaie : Dinar tunisien (TND)  
+🗣️ Langues : Arabe, Français  
+🕌 Religion : Islam (majoritaire)  
+
+☀️ Climat :
+- Méditerranéen  
+- Étés chauds et secs  
+- Hivers doux  
+
+📅 Meilleure période :
+✔ Avril à octobre  
+
+✈️ Accès :
+- Aéroport de Tunis  
+- Très touristique (facile d’accès)  
+
+🍽️ Gastronomie :
+- Couscous tunisien  
+- Brik  
+- Ojja  
+
+🎯 À faire absolument :
+- Visiter Carthage  
+- Explorer la médina de Tunis  
+- Se détendre à Djerba  
+- Profiter des plages de Sousse  
+
+⚠️ Conseils :
+- Crème solaire indispensable ☀️  
+- Zones touristiques très sécurisées  
+`
+}
+
+};
+// ================= AFFICHAGE =================
+
 function showCountry(name){
 const c = countries[name];
 
@@ -30,66 +160,3 @@ document.getElementById("info").innerHTML =
 "<div class='card'>" + c.desc + "</div>" +
 "<div class='card'>" + c.infos + "</div>";
 }
-const countries = {
-
-"Maroc":{
-name:"Maroc 🇲🇦",
-image:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
-desc:"Le Maroc est l’une des destinations les plus fascinantes d’Afrique du Nord. Entre les souks animés de Marrakech, les médinas historiques de Fès, les plages de l’Atlantique et les dunes du Sahara, le pays offre une diversité exceptionnelle. Les voyageurs apprécient particulièrement l’hospitalité marocaine, la richesse culturelle et les paysages spectaculaires.",
-
-infos:`
-📍 Capitale : Rabat  
-💰 Monnaie : Dirham marocain (MAD)  
-🗣️ Langues : Arabe, Français  
-☀️ Climat : Méditerranéen au nord, désertique au sud  
-📅 Meilleure période : Mars à mai / septembre à novembre  
-
-🎯 À faire :
-- Explorer les souks de Marrakech  
-- Visiter la médina de Fès  
-- Dormir dans le désert du Sahara  
-- Découvrir Chefchaouen (ville bleue)
-`
-},
-
-"Algérie":{
-name:"Algérie 🇩🇿",
-image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
-desc:"L’Algérie est le plus grand pays d’Afrique et offre une richesse naturelle impressionnante. Entre les plages de la Méditerranée, les montagnes de Kabylie et l’immensité du Sahara, elle propose une expérience authentique et encore préservée du tourisme de masse. Son patrimoine historique est également remarquable.",
-
-infos:`
-📍 Capitale : Alger  
-💰 Monnaie : Dinar algérien (DZD)  
-🗣️ Langues : Arabe, Français  
-☀️ Climat : Méditerranéen au nord, désertique au sud  
-📅 Meilleure période : Avril à juin / septembre  
-
-🎯 À faire :
-- Visiter la Casbah d’Alger  
-- Explorer le désert du Sahara  
-- Découvrir Constantine et ses ponts  
-- Profiter des plages méditerranéennes
-`
-},
-
-"Tunisie":{
-name:"Tunisie 🇹🇳",
-image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
-desc:"La Tunisie est une destination idéale pour combiner détente et découverte. Avec ses plages, ses médinas, ses sites antiques comme Carthage et son climat ensoleillé, elle attire des millions de visiteurs chaque année. C’est un pays accessible et riche culturellement.",
-
-infos:`
-📍 Capitale : Tunis  
-💰 Monnaie : Dinar tunisien (TND)  
-🗣️ Langues : Arabe, Français  
-☀️ Climat : Méditerranéen  
-📅 Meilleure période : Avril à octobre  
-
-🎯 À faire :
-- Visiter Carthage  
-- Se détendre à Djerba  
-- Explorer la médina de Tunis  
-- Profiter des stations balnéaires
-`
-}
-
-};
