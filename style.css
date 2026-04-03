@@ -6,26 +6,26 @@ html, body {
     color: white;
 }
 
+/* HEADER */
 header {
     text-align: center;
     padding: 25px;
     background: linear-gradient(135deg, #020617, #1e293b);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
-}
-
+/* CONTAINER PRINCIPAL */
 .container {
     display: flex;
-    height: 90vh;
+    height: calc(100vh - 100px); /* 🔥 IMPORTANT */
 }
 
+/* CARTE */
 #map {
     flex: 2;
+    height: 100%;
 }
 
+/* SIDEBAR */
 #sidebar {
     flex: 1;
     padding: 20px;
@@ -33,19 +33,15 @@ header h1 {
     overflow-y: auto;
 }
 
+/* CARDS */
 .card {
     background: #1e293b;
     padding: 15px;
     margin-bottom: 12px;
     border-radius: 12px;
-    animation: fade 0.5s ease;
 }
 
-@keyframes fade {
-    from {opacity:0; transform:translateY(10px);}
-    to {opacity:1; transform:translateY(0);}
-}
-
+/* IMAGE */
 img {
     width: 100%;
     border-radius: 12px;
