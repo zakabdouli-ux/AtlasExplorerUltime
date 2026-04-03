@@ -1,85 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Atlas Explorer 🌍</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Atlas Explorer 🌍</title>
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
 
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
+<style>
+html, body {
+margin: 0;
+height: 100%;
+font-family: Arial;
+}
 
-    header {
-      height: 80px;
-      background: #020617;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+header {
+height: 80px;
+background: linear-gradient(135deg,#020617,#1e293b);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
-    .container {
-      display: flex;
-      height: calc(100vh - 80px);
-    }
+.container {
+display: flex;
+height: calc(100vh - 80px);
+}
 
-    #map {
-      flex: 2;
-      height: 100%;
-      min-height: 500px;
-    }
+#map {
+flex: 2;
+height: 100%;
+}
 
-    #sidebar {
-      flex: 1;
-      background: #020617;
-      color: white;
-      padding: 20px;
-      overflow-y: auto;
-    }
+#sidebar {
+flex: 1;
+background: #020617;
+color: white;
+padding: 20px;
+overflow-y: auto;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+.card {
+background: #1e293b;
+padding: 15px;
+border-radius: 10px;
+margin-top: 10px;
+}
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-  </style>
+img {
+width: 100%;
+border-radius: 10px;
+margin-top: 10px;
+}
+
+h2 {
+margin-top: 0;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🌍 Atlas Explorer</h1>
-  </header>
+<header>
+<h1>🌍 Atlas Explorer</h1>
+</header>
 
-  <div class="container">
-    <div id="map"></div>
+<div class="container">
+<div id="map"></div>
 
-    <div id="sidebar">
-      <div id="info">
-        <h2>Découverte</h2>
-        <p>Clique sur un pays</p>
-      </div>
-    </div>
-  </div>
+<div id="sidebar">
+<div id="info">
+<h2>Découverte</h2>
+<p>Clique sur un pays ou une ville</p>
+</div>
+</div>
+</div>
 
-  <!-- Leaflet JS -->
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- TON SCRIPT -->
-  <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
