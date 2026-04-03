@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Atlas Explorer 🌍</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<!-- Leaflet (carte) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<!-- Ton style -->
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<header>
-<h1>🌍 Atlas Explorer</h1>
-<p>Le guide ultime du Maghreb</p>
-</header>
-
-<div class="container">
+<!-- Responsive -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CARTE -->
 <div id="map"></div>
 
+<!-- SIDEBAR -->
 <div id="sidebar">
-<h2>Découverte</h2>
-<div id="info">Clique sur un pays ou une ville</div>
-</div>
-</div>
+    <h2>Découverte</h2>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="data.js"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
+    <!-- ZONE INFOS (TRÈS IMPORTANT) -->
+    <div id="info">
+        Clique sur un pays pour afficher les informations
+    </div>
+</div>
