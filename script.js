@@ -28,28 +28,35 @@ desc:"Plages, culture et soleil."
 };
 
 // ================= FRONTIÈRES LOCALES =================
-fetch('countries.geojson')
-.then(res=>res.json())
-.then(data=>{
+fetch('./countries.geojson')
+.then(response => {
+    if (!response.ok) {
+        throw new Error("Erreur chargement GeoJSON");
+    }
+    return response.json();
+})
+.then(data => {
 
-L.geoJSON(data,{
-style:{
-color:"#22c55e",
-fillColor:"#22c55e",
-fillOpacity:0.4
-},
-onEachFeature:(feature,layer)=>{
+    L.geoJSON(data, {
+        style: {
+            color: "#22c55e",
+            fillColor: "#22c55e",
+            fillOpacity: 0.4
+        },
+        onEachFeature: (feature, layer) => {
 
-layer.on("mouseover",()=>layer.setStyle({fillOpacity:0.8}));
-layer.on("mouseout",()=>layer.setStyle({fillOpacity:0.4}));
+            layer.on("mouseover", () => layer.setStyle({ fillOpacity: 0.8 }));
+            layer.on("mouseout", () => layer.setStyle({ fillOpacity: 0.4 }));
 
-layer.on("click",()=>{
-showCountry(feature.properties.ADMIN);
-});
+            layer.on("click", () => {
+                showCountry(feature.properties.ADMIN);
+            });
+        }
+    }).addTo(map);
 
-}
-}).addTo(map);
-
+})
+.catch(error => {
+    console.error("Erreur GeoJSON :", error);
 });
 
 // ================= AFFICHAGE =================
