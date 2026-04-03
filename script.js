@@ -1,52 +1,46 @@
 const map = L.map('map').setView([31,5],5);
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+// fond de carte
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
 // données pays
 const countries = {
-"Morocco":{
+"Maroc":{
 name:"Maroc",
-desc:"Le Maroc est une destination riche entre désert, montagnes et villes impériales.",
+desc:"Pays riche entre désert, montagnes et villes impériales.",
 image:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800"
 },
-"Algeria":{
+"Algérie":{
 name:"Algérie",
-desc:"L’Algérie offre une grande diversité de paysages entre mer et Sahara.",
+desc:"Pays immense avec Sahara, mer et patrimoine historique.",
 image:"https://images.unsplash.com/photo-1606820871165-4c6cb0a6a53f?w=800"
 },
-"Tunisia":{
+"Tunisie":{
 name:"Tunisie",
-desc:"La Tunisie combine plages, culture et patrimoine historique.",
+desc:"Destination idéale entre plages et culture.",
 image:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800"
 }
 };
 
-// 🔥 FRONTIÈRES (VERSION SIMPLIFIÉE MAIS FIABLE)
-const geoData = {
-"type":"FeatureCollection",
-"features":[
+// 🔥 SOLUTION STABLE → PAS DE GEOJSON BUG
+const zones = [
 {
-"type":"Feature",
-"properties":{"ADMIN":"Morocco"},
-"geometry":{"type":"Polygon","coordinates":[[[-13,27],[-10,30],[-7,34],[-2,35],[-3,31],[-7,28],[-13,27]]]}
+name:"Maroc",
+coords:[[27,-13],[30,-10],[34,-7],[35,-2],[31,-3],[28,-7],[27,-13]]
 },
 {
-"type":"Feature",
-"properties":{"ADMIN":"Algeria"},
-"geometry":{"type":"Polygon","coordinates":[[[-8,19],[-2,28],[3,35],[9,35],[10,28],[4,22],[-3,19],[-8,19]]]}
+name:"Algérie",
+coords:[[19,-8],[28,-2],[35,3],[35,9],[28,10],[22,4],[19,-3],[19,-8]]
 },
 {
-"type":"Feature",
-"properties":{"ADMIN":"Tunisia"},
-"geometry":{"type":"Polygon","coordinates":[[[7,30],[9,33],[10,36],[11,34],[9,30],[7,30]]]}
+name:"Tunisie",
+coords:[[30,7],[33,9],[36,10],[34,11],[30,9],[30,7]]
 }
-]
-};
+];
 
-// affichage info
+// afficher pays
 function showCountry(name){
 const d = countries[name];
-if(!d) return;
 
 document.getElementById("info").innerHTML = `
 <h2>${d.name}</h2>
@@ -55,19 +49,17 @@ document.getElementById("info").innerHTML = `
 `;
 }
 
-// carte interactive
-L.geoJSON(geoData,{
-style:{
+// afficher sur carte
+zones.forEach(zone=>{
+let polygon = L.polygon(zone.coords,{
 color:"#22c55e",
-fillColor:"#22c55e",
 fillOpacity:0.5
-},
-onEachFeature:(feature,layer)=>{
-layer.on('mouseover',()=>layer.setStyle({fillOpacity:0.8}));
-layer.on('mouseout',()=>layer.setStyle({fillOpacity:0.5}));
-
-layer.on('click',()=>{
-showCountry(feature.properties.ADMIN);
-});
-}
 }).addTo(map);
+
+polygon.on('mouseover',()=>polygon.setStyle({fillOpacity:0.8}));
+polygon.on('mouseout',()=>polygon.setStyle({fillOpacity:0.5}));
+
+polygon.on('click',()=>{
+showCountry(zone.name);
+});
+});
