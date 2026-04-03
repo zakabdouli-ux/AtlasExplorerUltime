@@ -1,8 +1,16 @@
-const map = L.map('map').setView([31,5],5);
+// ================= CARTE =================
+const map = L.map('map');
 
+// fond de carte (ULTRA STABLE)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: "Map"
+    attribution: "© OpenStreetMap"
 }).addTo(map);
+
+// ⚡ TRÈS IMPORTANT : on force l'affichage
+setTimeout(() => {
+    map.setView([31,5],5);
+    map.invalidateSize();
+}, 100);
 // ================= FRONTIÈRES =================
 
 // Maroc
