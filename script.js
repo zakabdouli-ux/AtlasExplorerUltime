@@ -9,7 +9,7 @@ const countries = {
 
 "Maroc":{
 name:"Maroc 🇲🇦",
-image:"https://images.unsplash.com/photo-1548013146-72479768bada?w=1000",
+image:"https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200",
 desc:"Le Maroc est une destination emblématique d’Afrique du Nord, offrant une diversité exceptionnelle de paysages et de cultures. Entre les médinas animées, les montagnes de l’Atlas, les plages de l’Atlantique et les dunes du Sahara, le pays séduit par son authenticité et sa richesse.",
 
 infos:`
@@ -51,7 +51,7 @@ infos:`
 
 "Algérie":{
 name:"Algérie 🇩🇿",
-image:"https://www.google.fr/imgres?q=paysage%20algerien&imgurl=https%3A%2F%2Fwww.okvoyage.com%2Fwp-content%2Fuploads%2F2023%2F12%2Fles-paysages-dalgerie.jpg&imgrefurl=https%3A%2F%2Fwww.okvoyage.com%2Fpost%2Fpaysages-algerie%2F&docid=HGAzk60IyARL_M&tbnid=32v_9JNglFMmrM&vet=12ahUKEwjRrtqDi9KTAxXFVKQEHRqxBzgQnPAOegQIIBAB..i&w=1920&h=1279&hcb=2&ved=2ahUKEwjRrtqDi9KTAxXFVKQEHRqxBzgQnPAOegQIIBAB",
+image:"https://www.okvoyage.com/wp-content/uploads/2023/12/les-paysages-dalgerie.jpg",
 desc:"L’Algérie est le plus grand pays d’Afrique et possède une richesse naturelle et culturelle impressionnante. Encore peu touristique, elle offre une expérience authentique entre mer Méditerranée, montagnes et désert du Sahara.",
 
 infos:`
@@ -92,7 +92,7 @@ infos:`
 
 "Tunisie":{
 name:"Tunisie 🇹🇳",
-image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000",
+image:"https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200",
 desc:"La Tunisie est une destination touristique majeure combinant plages, patrimoine historique et culture riche. Accessible et ensoleillée, elle offre une grande variété d’expériences entre détente et découverte.",
 
 infos:`
