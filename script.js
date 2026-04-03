@@ -1,8 +1,31 @@
-const map=L.map('map').setView([31,5],5);
+const map = L.map('map').setView([31,5],5);
 
+// fond de carte
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-// Chargement frontières réelles
+// données pays (IMPORTANT)
+const countries = {
+"Morocco":{
+name:"Maroc",
+image:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+desc:"Le Maroc est une destination touristique riche entre désert, montagnes et villes impériales.",
+infos:"Capitale : Rabat | Monnaie : Dirham"
+},
+"Algeria":{
+name:"Algérie",
+image:"https://images.unsplash.com/photo-1606820871165-4c6cb0a6a53f?w=800",
+desc:"L’Algérie offre une diversité de paysages entre Méditerranée et Sahara.",
+infos:"Capitale : Alger | Monnaie : Dinar"
+},
+"Tunisia":{
+name:"Tunisie",
+image:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+desc:"La Tunisie combine plages, culture et patrimoine historique.",
+infos:"Capitale : Tunis | Monnaie : Dinar"
+}
+};
+
+// 🔥 FRONTIÈRES INTÉGRÉES (fonctionne partout)
 const geoData = {
 "type":"FeatureCollection",
 "features":[
@@ -24,43 +47,27 @@ const geoData = {
 ]
 };
 
+// affichage pays
+function showCountry(name){
+const d = countries[name];
+if(!d) return;
+
+document.getElementById("info").innerHTML = `
+<h2>${d.name}</h2>
+<img src="${d.image}">
+<div class="card">${d.infos}</div>
+<div class="card">${d.desc}</div>
+`;
+}
+
+// carte interactive
 L.geoJSON(geoData,{
-style:{color:"#22c55e",fillColor:"#22c55e",fillOpacity:0.4},
+style:{color:"#22c55e",fillColor:"#22c55e",fillOpacity:0.5},
 onEachFeature:(feature,layer)=>{
+layer.on('mouseover',()=>layer.setStyle({fillOpacity:0.8}));
+layer.on('mouseout',()=>layer.setStyle({fillOpacity:0.5}));
 layer.on('click',()=>{
 showCountry(feature.properties.ADMIN);
 });
 }
 }).addTo(map);
-
-// affichage pays
-function showCountry(name){
-const d=countries[name];
-if(!d)return;
-document.getElementById("info").innerHTML=
-`<h2>${d.name}</h2>
-<img src="${d.image}">
-<div class="card">${d.infos}</div>
-<div class="card">${d.desc}</div>`;
-}
-
-// villes
-const cityList=[
-["Marrakech",31.63,-8],
-["Fès",34.02,-5],
-["Alger",36.75,3.06],
-["Oran",35.7,-0.6],
-["Tunis",36.8,10.18],
-["Djerba",33.8,10.8]
-];
-
-cityList.forEach(c=>{
-let m=L.marker([c[1],c[2]]).addTo(map);
-m.on('click',()=>{
-let d=cities[c[0]];
-document.getElementById("info").innerHTML=
-`<h2>${c[0]}</h2>
-<img src="${d.img}">
-<div class="card">${d.desc}</div>`;
-});
-});
