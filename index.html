@@ -3,198 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atlas Explorer</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1220;
-      color: white;
-    }
-
-    header {
-      background: linear-gradient(135deg, #020617, #1e293b);
-      text-align: center;
-      padding: 20px;
-    }
-
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 2rem;
-    }
-
-    header p {
-      margin: 0;
-      color: #cbd5e1;
-    }
-
-    .container {
-      display: flex;
-      height: calc(100vh - 96px);
-    }
-
-    #map {
-      flex: 2;
-      height: 100%;
-      min-height: 500px;
-    }
-
-    #sidebar {
-      flex: 1;
-      background: #020617;
-      padding: 20px;
-      overflow-y: auto;
-      border-left: 1px solid #1e293b;
-    }
-
-    #sidebar h2 {
-      margin-top: 0;
-      font-size: 1.8rem;
-    }
-
-    .card {
-      background: #1e293b;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-        height: auto;
-      }
-
-      #map {
-        height: 55vh;
-      }
-    }
-  </style>
+  <title>Carte Interactive du Maghreb</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header>
-    <h1>🌍 Atlas Explorer</h1>
-    <p>Explorez le Maghreb comme jamais auparavant</p>
+    <h1>Carte Interactive du Maghreb</h1>
+    <p>Cliquez sur un pays pour découvrir ses plus belles villes et lieux touristiques 🌴</p>
   </header>
 
-  <div class="container">
-    <div id="map"></div>
+  <div id="container">
+    <div id="map-container">
+      <object id="map" data="maps/maghreb.svg" type="image/svg+xml"></object>
+    </div>
 
-    <aside id="sidebar">
-      <div id="info">
-        <h2>Découverte</h2>
-        <div class="card">Clique sur un pays.</div>
-      </div>
-    </aside>
+    <div id="info-panel">
+      <h2 id="country-name">Sélectionnez un pays</h2>
+      <p id="country-description"></p>
+
+      <h3>Villes principales</h3>
+      <ul id="city-list"></ul>
+
+      <h3>Galerie</h3>
+      <div id="image-gallery"></div>
+    </div>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const map = L.map("map").setView([31.5, 4.5], 5);
-
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "&copy; OpenStreetMap & Carto"
-    }).addTo(map);
-
-    const countries = {
-      "Maroc": {
-        title: "Maroc",
-        image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
-        text: "Le Maroc séduit par la diversité de ses paysages, entre villes impériales, montagnes de l’Atlas, côte atlantique et désert. C’est une destination idéale pour les voyageurs qui recherchent à la fois culture, gastronomie, artisanat et dépaysement."
-      },
-      "Algérie": {
-        title: "Algérie",
-        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-        text: "L’Algérie impressionne par son immensité, son littoral méditerranéen, ses massifs montagneux et les grands espaces sahariens. Le pays possède un patrimoine historique et culturel majeur, encore peu connu du grand public."
-      },
-      "Tunisie": {
-        title: "Tunisie",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-        text: "La Tunisie combine patrimoine, climat agréable et tourisme balnéaire. Entre médinas, vestiges antiques, plages et villes animées, elle constitue une destination accessible et très riche pour un séjour varié."
-      }
-    };
-
-    function showCountry(name) {
-      const data = countries[name];
-      if (!data) return;
-
-      document.getElementById("info").innerHTML = `
-        <h2>${data.title}</h2>
-        <div class="card">
-          <img src="${data.image}" alt="${data.title}">
-          <p>${data.text}</p>
-        </div>
-      `;
-    }
-
-    const morocco = L.polygon([
-      [27.0, -13.0],
-      [29.5, -11.0],
-      [32.0, -9.0],
-      [35.0, -6.0],
-      [35.5, -2.0],
-      [31.0, -1.0],
-      [28.0, -5.5],
-      [27.0, -13.0]
-    ], {
-      color: "#22c55e",
-      fillColor: "#22c55e",
-      fillOpacity: 0.45,
-      weight: 2
-    }).addTo(map);
-
-    const algeria = L.polygon([
-      [19.0, -8.5],
-      [24.0, -5.0],
-      [30.0, -1.0],
-      [35.0, 2.5],
-      [36.5, 8.5],
-      [32.0, 11.5],
-      [25.0, 8.0],
-      [20.0, 2.0],
-      [19.0, -8.5]
-    ], {
-      color: "#22c55e",
-      fillColor: "#22c55e",
-      fillOpacity: 0.45,
-      weight: 2
-    }).addTo(map);
-
-    const tunisia = L.polygon([
-      [30.0, 7.5],
-      [32.0, 8.5],
-      [35.0, 9.5],
-      [37.0, 10.8],
-      [34.0, 11.5],
-      [31.0, 10.0],
-      [30.0, 7.5]
-    ], {
-      color: "#22c55e",
-      fillColor: "#22c55e",
-      fillOpacity: 0.45,
-      weight: 2
-    }).addTo(map);
-
-    [morocco, algeria, tunisia].forEach(layer => {
-      layer.on("mouseover", () => layer.setStyle({ fillOpacity: 0.75 }));
-      layer.on("mouseout", () => layer.setStyle({ fillOpacity: 0.45 }));
-    });
-
-    morocco.on("click", () => showCountry("Maroc"));
-    algeria.on("click", () => showCountry("Algérie"));
-    tunisia.on("click", () => showCountry("Tunisie"));
-  </script>
+  <footer>© 2024 Carte du Maghreb · Fait avec ❤️ par [ton nom]</footer>
+  <script src="script.js"></script>
 </body>
 </html>
+
