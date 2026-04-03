@@ -51,7 +51,7 @@ infos:`
 
 "Algérie":{
 name:"Algérie 🇩🇿",
-image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000",
+image:"https://www.google.fr/imgres?q=paysage%20algerien&imgurl=https%3A%2F%2Fwww.okvoyage.com%2Fwp-content%2Fuploads%2F2023%2F12%2Fles-paysages-dalgerie.jpg&imgrefurl=https%3A%2F%2Fwww.okvoyage.com%2Fpost%2Fpaysages-algerie%2F&docid=HGAzk60IyARL_M&tbnid=32v_9JNglFMmrM&vet=12ahUKEwjRrtqDi9KTAxXFVKQEHRqxBzgQnPAOegQIIBAB..i&w=1920&h=1279&hcb=2&ved=2ahUKEwjRrtqDi9KTAxXFVKQEHRqxBzgQnPAOegQIIBAB",
 desc:"L’Algérie est le plus grand pays d’Afrique et possède une richesse naturelle et culturelle impressionnante. Encore peu touristique, elle offre une expérience authentique entre mer Méditerranée, montagnes et désert du Sahara.",
 
 infos:`
