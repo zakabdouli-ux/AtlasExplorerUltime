@@ -168,32 +168,32 @@ tunisie.on("click",()=>showCountry("Tunisie"));
 const cityData = {
 
 "Marrakech":{
-image:"https://images.unsplash.com/photo-1597211684563-9d7c1b3c8c2c?w=800",
+image:"https://images.unsplash.com/photo-1597211684563-9d7c1b3c8c2c?w=1200",
 desc:"Marrakech est une ville emblématique du Maroc, connue pour ses souks, ses palais et sa place Jemaa el-Fna."
 },
 
 "Fès":{
-image:"https://images.unsplash.com/photo-1578898887932-dce23a595ad4?w=800",
+image:"https://images.unsplash.com/photo-1578898887932-dce23a595ad4?w=1200",
 desc:"Fès est une ville historique avec une médina classée à l’UNESCO."
 },
 
 "Alger":{
-image:"https://images.unsplash.com/photo-1587653263995-422546a7a569?w=800",
+image:"https://upload.wikimedia.org/wikipedia/commons/5/59/Alger_vue_generale.jpg",
 desc:"Alger est une capitale méditerranéenne avec une riche histoire."
 },
 
 "Oran":{
-image:"https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=800",
+image:"https://upload.wikimedia.org/wikipedia/commons/3/3e/Oran_Algerie.jpg",
 desc:"Oran est une ville dynamique connue pour la musique raï."
 },
 
 "Tunis":{
-image:"https://images.unsplash.com/photo-1577086664693-894d8405334a?w=800",
+image:"https://upload.wikimedia.org/wikipedia/commons/8/8a/Tunis_medina.jpg",
 desc:"Tunis est une capitale historique proche de Carthage."
 },
 
 "Djerba":{
-image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800",
+image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200",
 desc:"Djerba est une île paradisiaque idéale pour les vacances."
 }
 
