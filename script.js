@@ -147,20 +147,72 @@ document.getElementById("info").innerHTML =
 }
 
 // ================= FRONTIÈRES =================
-const maroc = L.polygon([[27,-13],[32,-9],[35,-6],[35,-2],[30,-1],[28,-7]], {color:"#22c55e"}).addTo(map);
-const algerie = L.polygon([[19,-8],[28,-2],[35,3],[36,8],[30,11],[22,4]], {color:"#22c55e"}).addTo(map);
-const tunisie = L.polygon([[30,7],[33,9],[37,10],[34,11],[31,10]], {color:"#22c55e"}).addTo(map);
+const geoData = {
+"type":"FeatureCollection",
+"features":[
+{
+"type":"Feature",
+"properties":{"name":"Maroc"},
+"geometry":{
+"type":"Polygon",
+"coordinates":[[
+[-13.17,27.66],[-9.41,30.30],[-6.90,33.99],[-2.00,35.20],[-1.20,32.00],
+[-5.50,29.50],[-9.50,27.50],[-13.17,27.66]
+]]
+}
+},
+{
+"type":"Feature",
+"properties":{"name":"Algérie"},
+"geometry":{
+"type":"Polygon",
+"coordinates":[[
+[-8.66,19.05],[-2.00,28.00],[3.00,35.00],[9.00,35.00],[11.00,28.00],
+[6.00,22.00],[0.00,20.00],[-8.66,19.05]
+]]
+}
+},
+{
+"type":"Feature",
+"properties":{"name":"Tunisie"},
+"geometry":{
+"type":"Polygon",
+"coordinates":[[
+[7.50,30.00],[9.50,33.00],[11.50,36.80],[10.50,34.00],
+[9.00,31.00],[7.50,30.00]
+]]
+}
+}
+]
+};
+// ================= AFFICHAGE + INTERACTION =================
 
-// effet hover sur pays
-[maroc, algerie, tunisie].forEach(p=>{
-p.on("mouseover",()=>p.setStyle({fillOpacity:0.8}));
-p.on("mouseout",()=>p.setStyle({fillOpacity:0.5}));
+L.geoJSON(geoData,{
+style:{
+color:"#22c55e",
+fillColor:"#22c55e",
+fillOpacity:0.4,
+weight:2
+},
+onEachFeature:function(feature, layer){
+
+// hover
+layer.on("mouseover",function(){
+layer.setStyle({fillOpacity:0.8});
 });
 
-// clic pays
-maroc.on("click",()=>showCountry("Maroc"));
-algerie.on("click",()=>showCountry("Algérie"));
-tunisie.on("click",()=>showCountry("Tunisie"));
+layer.on("mouseout",function(){
+layer.setStyle({fillOpacity:0.4});
+});
+
+// clic
+layer.on("click",function(){
+showCountry(feature.properties.name);
+});
+
+}
+}).addTo(map);
+
 
 // ================= VILLES =================
 
