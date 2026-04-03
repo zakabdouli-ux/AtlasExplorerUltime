@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atlas Explorer 🌍</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Leaflet</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
 
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      height: 80px;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 80px);
+    }
+
+    #map {
+      flex: 2;
+      height: 100%;
+      min-height: 500px;
+    }
+
+    #sidebar {
+      flex: 1;
+      background: #020617;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Atlas Explorer</h1>
+  </header>
 
-<header>
-<h1>🌍 Atlas Explorer</h1>
-<p>Explorez le Maghreb et l'Afrique du Nord</p>
-</header>
+  <div class="container">
+    <div id="map"></div>
+    <aside id="sidebar">
+      <h2>Infos</h2>
+      <p>Test carte</p>
+    </aside>
+  </div>
 
-<div class="container">
-<div id="map"></div>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([31, 5], 5);
 
-<div id="sidebar">
-<div id="info">
-<h2>Découverte</h2>
-<div class="card">Clique sur un pays ou une ville</div>
-</div>
-</div>
-</div>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
 
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="data.js"></script>
-<script src="script.js"></script>
-
-<div>
-<button onclick="filter('culture')">Culture</button>
-<button onclick="filter('plage')">Plage</button>
-<button onclick="filter('nature')">Nature</button>
-</div>
-
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+  </script>
 </body>
 </html>
