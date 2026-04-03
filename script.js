@@ -150,46 +150,68 @@ document.getElementById("info").innerHTML =
 fetch('./countries.geo.json')
   .then(res => res.json())
   .then(data => {
+
+    console.log("GeoJSON chargé :", data); // debug
+
     L.geoJSON(data, {
 
-      style: {
-        color: "#22c55e",
-        fillColor: "#22c55e",
-        fillOpacity: 0.35,
-        weight: 2
+      style: function () {
+        return {
+          color: "#22c55e",
+          fillColor: "#22c55e",
+          fillOpacity: 0.35,
+          weight: 2
+        };
       },
 
- onEachFeature: function(feature, layer){
+      onEachFeature: function (feature, layer) {
 
-layer.on("mouseover", () => {
-layer.setStyle({ fillOpacity: 0.7 });
-});
+        // HOVER
+        layer.on("mouseover", function () {
+          this.setStyle({ fillOpacity: 0.7 });
+        });
 
-layer.on("mouseout", () => {
-layer.setStyle({ fillOpacity: 0.35 });
-});
+        layer.on("mouseout", function () {
+          this.setStyle({ fillOpacity: 0.35 });
+        });
 
-layer.on("click", () => {
+        // CLICK
+        layer.on("click", function () {
 
-const mapping = {
-"Morocco": "Maroc",
-"Algeria": "Algérie",
-"Tunisia": "Tunisie"
-};
+          console.log("CLICK PROPERTIES :", feature.properties);
 
-const rawName = feature.properties.ADMIN || feature.properties.name;
-const name = mapping[rawName];
+          // récupère le bon nom (robuste)
+          const rawName =
+            feature.properties.ADMIN ||
+            feature.properties.name ||
+            feature.properties.NAME ||
+            feature.properties.admin;
 
-    if(name){
-showCountry(name);
+          // mapping anglais -> français
+          const mapping = {
+            "Morocco": "Maroc",
+            "Algeria": "Algérie",
+            "Tunisia": "Tunisie"
+          };
+
+          const name = mapping[rawName];
+
+          if (name) {
+            showCountry(name);
+          } else {
+            console.log("Pays non reconnu :", rawName);
+          }
 
         });
 
       }
 
     }).addTo(map);
-  });
 
+  })
+  .catch(err => {
+    console.error("Erreur GeoJSON :", err);
+  });
 // ================= VILLES =================
 
 // données des villes
