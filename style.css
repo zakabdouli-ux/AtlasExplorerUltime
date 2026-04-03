@@ -1,24 +1,31 @@
-
-html,body{height:100%;margin:0;font-family:Segoe UI;background:#0f172a;color:white}
-header{text-align:center;padding:25px;background:linear-gradient(135deg,#020617,#1e293b)}
-header h1{margin:0;font-size:32px}
-.container{display:flex;height:90vh}
-#map{flex:2;height:100%}
-#sidebar{flex:1;padding:20px;background:#020617;overflow:auto;border-left:1px solid #1e293b}
-.card{background:#1e293b;padding:15px;margin-bottom:12px;border-radius:12px;transition:0.3s}
-.card:hover{transform:translateY(-5px)}
-img{width:100%;border-radius:10px;margin-bottom:10px}
-h2{margin-top:0}
-button {
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    background:#22c55e;
-    color:white;
-    cursor:pointer;
-    margin:5px;
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-button:hover {
-    background:#16a34a;
+header {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
+    color: white;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+/* 🔥 LA LIGNE QUI SAUVE TOUT */
+#map {
+    flex: 2;
+    height: 100%;
+    min-height: 500px;
+    background: red; /* TEST */
+}
+
+#sidebar {
+    flex: 1;
+    background: #111;
+    color: white;
+    padding: 20px;
 }
