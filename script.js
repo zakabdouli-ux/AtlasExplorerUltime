@@ -3,24 +3,35 @@ const map=L.map('map').setView([31,5],5);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
 // Chargement frontières réelles
-fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
-.then(res=>res.json())
-.then(data=>{
-let selected=data.features.filter(f=>
-["Morocco","Algeria","Tunisia"].includes(f.properties.ADMIN)
-);
+const geoData = {
+"type":"FeatureCollection",
+"features":[
+{
+"type":"Feature",
+"properties":{"ADMIN":"Morocco"},
+"geometry":{"type":"Polygon","coordinates":[[[-13,27],[-10,30],[-7,34],[-2,35],[-3,31],[-7,28],[-13,27]]]}
+},
+{
+"type":"Feature",
+"properties":{"ADMIN":"Algeria"},
+"geometry":{"type":"Polygon","coordinates":[[[-8,19],[-2,28],[3,35],[9,35],[10,28],[4,22],[-3,19],[-8,19]]]}
+},
+{
+"type":"Feature",
+"properties":{"ADMIN":"Tunisia"},
+"geometry":{"type":"Polygon","coordinates":[[[7,30],[9,33],[10,36],[11,34],[9,30],[7,30]]]}
+}
+]
+};
 
-L.geoJSON(selected,{
+L.geoJSON(geoData,{
 style:{color:"#22c55e",fillColor:"#22c55e",fillOpacity:0.4},
 onEachFeature:(feature,layer)=>{
-layer.on('mouseover',()=>layer.setStyle({fillOpacity:0.7}));
-layer.on('mouseout',()=>layer.setStyle({fillOpacity:0.4}));
 layer.on('click',()=>{
 showCountry(feature.properties.ADMIN);
 });
 }
 }).addTo(map);
-});
 
 // affichage pays
 function showCountry(name){
