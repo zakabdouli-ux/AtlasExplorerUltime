@@ -150,6 +150,12 @@ const maroc = L.polygon([[27,-13],[32,-9],[35,-6],[35,-2],[30,-1],[28,-7]], {col
 const algerie = L.polygon([[19,-8],[28,-2],[35,3],[36,8],[30,11],[22,4]], {color:"#22c55e"}).addTo(map);
 const tunisie = L.polygon([[30,7],[33,9],[37,10],[34,11],[31,10]], {color:"#22c55e"}).addTo(map);
 
+// effet hover sur pays
+[maroc, algerie, tunisie].forEach(p=>{
+p.on("mouseover",()=>p.setStyle({fillOpacity:0.8}));
+p.on("mouseout",()=>p.setStyle({fillOpacity:0.5}));
+});
+
 // clic pays
 maroc.on("click",()=>showCountry("Maroc"));
 algerie.on("click",()=>showCountry("Algérie"));
