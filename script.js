@@ -147,7 +147,7 @@ document.getElementById("info").innerHTML =
 }
 
 // ================= FRONTIÈRES =================
-fetch('./countries.geojson')
+fetch('./countries.geo.json')
   .then(res => res.json())
   .then(data => {
     L.geoJSON(data, {
