@@ -147,72 +147,37 @@ document.getElementById("info").innerHTML =
 }
 
 // ================= FRONTIÈRES =================
-const geoData = {
-"type":"FeatureCollection",
-"features":[
-{
-"type":"Feature",
-"properties":{"name":"Maroc"},
-"geometry":{
-"type":"Polygon",
-"coordinates":[[
-[-13.17,27.66],[-9.41,30.30],[-6.90,33.99],[-2.00,35.20],[-1.20,32.00],
-[-5.50,29.50],[-9.50,27.50],[-13.17,27.66]
-]]
-}
-},
-{
-"type":"Feature",
-"properties":{"name":"Algérie"},
-"geometry":{
-"type":"Polygon",
-"coordinates":[[
-[-8.66,19.05],[-2.00,28.00],[3.00,35.00],[9.00,35.00],[11.00,28.00],
-[6.00,22.00],[0.00,20.00],[-8.66,19.05]
-]]
-}
-},
-{
-"type":"Feature",
-"properties":{"name":"Tunisie"},
-"geometry":{
-"type":"Polygon",
-"coordinates":[[
-[7.50,30.00],[9.50,33.00],[11.50,36.80],[10.50,34.00],
-[9.00,31.00],[7.50,30.00]
-]]
-}
-}
-]
-};
-// ================= AFFICHAGE + INTERACTION =================
+fetch('./countries.geojson')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
 
-L.geoJSON(geoData,{
-style:{
-color:"#22c55e",
-fillColor:"#22c55e",
-fillOpacity:0.4,
-weight:2
-},
-onEachFeature:function(feature, layer){
+      style: {
+        color: "#22c55e",
+        fillColor: "#22c55e",
+        fillOpacity: 0.35,
+        weight: 2
+      },
 
-// hover
-layer.on("mouseover",function(){
-layer.setStyle({fillOpacity:0.8});
-});
+      onEachFeature: function(feature, layer) {
 
-layer.on("mouseout",function(){
-layer.setStyle({fillOpacity:0.4});
-});
+        layer.on("mouseover", () => {
+          layer.setStyle({ fillOpacity: 0.7 });
+        });
 
-// clic
-layer.on("click",function(){
-showCountry(feature.properties.name);
-});
+        layer.on("mouseout", () => {
+          layer.setStyle({ fillOpacity: 0.35 });
+        });
 
-}
-}).addTo(map);
+        layer.on("click", () => {
+          const name = feature.properties.ADMIN || feature.properties.name;
+          showCountry(name);
+        });
 
+      }
+
+    }).addTo(map);
+  });
 
 // ================= VILLES =================
 
