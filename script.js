@@ -9,7 +9,7 @@ const countries = {
 
 "Maroc":{
 name:"Maroc 🇲🇦",
-image:"https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200",
+image:"paysage maroc.webp",
 desc:"Le Maroc est une destination emblématique d’Afrique du Nord, offrant une diversité exceptionnelle de paysages et de cultures. Entre les médinas animées, les montagnes de l’Atlas, les plages de l’Atlantique et les dunes du Sahara, le pays séduit par son authenticité et sa richesse.",
 
 infos:`
@@ -51,7 +51,7 @@ infos:`
 
 "Algérie":{
 name:"Algérie 🇩🇿",
-image:"https://www.okvoyage.com/wp-content/uploads/2023/12/les-paysages-dalgerie.jpg",
+image:"paysage.webp",
 desc:"L’Algérie est le plus grand pays d’Afrique et possède une richesse naturelle et culturelle impressionnante. Encore peu touristique, elle offre une expérience authentique entre mer Méditerranée, montagnes et désert du Sahara.",
 
 infos:`
@@ -92,7 +92,7 @@ infos:`
 
 "Tunisie":{
 name:"Tunisie 🇹🇳",
-image:"https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200",
+image:"paysage tunis.webp",
 desc:"La Tunisie est une destination touristique majeure combinant plages, patrimoine historique et culture riche. Accessible et ensoleillée, elle offre une grande variété d’expériences entre détente et découverte.",
 
 infos:`
@@ -218,32 +218,32 @@ fetch('./countries.geo.json')
 const cityData = {
 
 "Marrakech":{
-image:"https://upload.wikimedia.org/wikipedia/commons/5/58/Jemaa_el-Fnaa_square%2C_Marrakesh.jpg",
+image:"marrakech.webp",
 desc:"Marrakech est une ville emblématique du Maroc, connue pour ses souks, ses palais et sa place Jemaa el-Fna."
 },
 
 "Fès":{
-image:"https://images.unsplash.com/photo-1578898887932-dce23a595ad4?w=1200",
+image:"meknes.webp",
 desc:"Fès est une ville historique avec une médina classée à l’UNESCO."
 },
 
 "Alger":{
-image:"https://upload.wikimedia.org/wikipedia/commons/5/59/Alger_vue_generale.jpg",
+image:"paysage alger.webp",
 desc:"Alger est une capitale méditerranéenne avec une riche histoire."
 },
 
 "Oran":{
-image:"https://upload.wikimedia.org/wikipedia/commons/3/3e/Oran_Algerie.jpg",
+image:"oran.webp",
 desc:"Oran est une ville dynamique connue pour la musique raï."
 },
 
 "Tunis":{
-image:"https://upload.wikimedia.org/wikipedia/commons/8/8a/Tunis_medina.jpg",
+image:"paysage tunisie.webp",
 desc:"Tunis est une capitale historique proche de Carthage."
 },
 
 "Djerba":{
-image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200",
+image:"djerba.webp",
 desc:"Djerba est une île paradisiaque idéale pour les vacances."
 }
 
