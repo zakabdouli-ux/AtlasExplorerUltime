@@ -15,7 +15,7 @@ header {
     height: calc(100vh - 80px);
 }
 
-/* 🔥 LA LIGNE QUI SAUVE TOUT */
+
 #map {
     flex: 2;
     height: 100%;
