@@ -324,3 +324,52 @@ cityForm.addEventListener("submit", function(event) {
   alert("Suggestion envoyée avec succès !");
   cityForm.reset();
 });
+// ================= ÉTAPE 2 : FORMULAIRE INTERACTIF =================
+
+// Tableau qui stocke les données du formulaire
+let suggestions = [];
+
+// Récupération des éléments HTML
+const cityForm = document.getElementById("cityForm");
+const formMessage = document.getElementById("formMessage");
+
+// Validation et enregistrement du formulaire
+cityForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const cityName = document.getElementById("cityName").value.trim();
+  const countryName = document.getElementById("countryName").value;
+  const reason = document.getElementById("reason").value.trim();
+
+  if (cityName === "" || countryName === "" || reason === "") {
+    formMessage.style.color = "#ef4444";
+    formMessage.innerHTML = "Erreur : tous les champs sont obligatoires.";
+    alert("Le formulaire est incomplet.");
+    return;
+  }
+
+  if (reason.length < 20) {
+    formMessage.style.color = "#f97316";
+    formMessage.innerHTML = "Erreur : la description doit contenir au moins 20 caractères.";
+    alert("La description est trop courte.");
+    return;
+  }
+
+  const suggestion = {
+    ville: cityName,
+    pays: countryName,
+    description: reason
+  };
+
+  suggestions.push(suggestion);
+
+  formMessage.style.color = "#22c55e";
+  formMessage.innerHTML =
+    "Ville enregistrée : <strong>" + cityName + "</strong> (" + countryName + ")";
+
+  alert("Suggestion envoyée avec succès !");
+
+  console.log("Tableau des suggestions :", suggestions);
+
+  cityForm.reset();
+});
