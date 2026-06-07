@@ -98,6 +98,60 @@ width: 6px;
 background: #22c55e;
 border-radius: 10px;
 }
+
+  .form-card {
+background: #111827;
+padding: 18px;
+margin-top: 20px;
+border-radius: 14px;
+border: 1px solid #1e293b;
+}
+
+.form-card label {
+display: block;
+margin-top: 12px;
+margin-bottom: 6px;
+color: #cbd5e1;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+width: 100%;
+padding: 10px;
+border-radius: 8px;
+border: none;
+outline: none;
+background: #1e293b;
+color: white;
+box-sizing: border-box;
+}
+
+.form-card textarea {
+min-height: 90px;
+resize: vertical;
+}
+
+.form-card button {
+margin-top: 15px;
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+background: #22c55e;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+
+.form-card button:hover {
+background: #16a34a;
+}
+
+#formMessage {
+margin-top: 12px;
+font-weight: bold;
+}
 </style>
 </head>
 
@@ -114,6 +168,30 @@ border-radius: 10px;
 <div id="info">
 <h2>Découverte</h2>
 <p>Clique sur un pays ou une ville</p>
+</div>
+
+<div class="form-card">
+<h2>Proposer une ville</h2>
+
+<form id="cityForm">
+<label for="cityName">Nom de la ville :</label>
+<input type="text" id="cityName" placeholder="Ex : Tlemcen">
+
+<label for="countryName">Pays :</label>
+<select id="countryName">
+<option value="">Choisir un pays</option>
+<option value="Maroc">Maroc</option>
+<option value="Algérie">Algérie</option>
+<option value="Tunisie">Tunisie</option>
+</select>
+
+<label for="reason">Pourquoi cette ville est intéressante ?</label>
+<textarea id="reason" placeholder="Explique son intérêt touristique..."></textarea>
+
+<button type="submit">Envoyer la suggestion</button>
+</form>
+
+<div id="formMessage"></div>
 </div>
 </div>
 </div>
