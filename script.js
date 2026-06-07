@@ -302,6 +302,15 @@ const cityForm = document.getElementById("cityForm");
 const formMessage = document.getElementById("formMessage");
 
 // Validation et enregistrement du formulaire
+const marocCount =
+suggestions.filter(s => s.pays === "Maroc").length;
+
+const algerieCount =
+suggestions.filter(s => s.pays === "Algérie").length;
+
+const tunisieCount =
+suggestions.filter(s => s.pays === "Tunisie").length;
+
 const ctx = document.getElementById("countryChart");
 
 const countryChart = new Chart(ctx, {
@@ -310,7 +319,11 @@ const countryChart = new Chart(ctx, {
         labels: ["Maroc", "Algérie", "Tunisie"],
         datasets: [{
             label: "Nombre de suggestions",
-            data: [0,0,0]
+            data: [
+                marocCount,
+                algerieCount,
+                tunisieCount
+            ]
         }]
     }
 });
