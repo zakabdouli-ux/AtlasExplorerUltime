@@ -198,6 +198,29 @@ font-weight: bold;
 
     <button id="exportExcel">
 📊 Exporter les suggestions en Excel
+
+      <div class="card">
+  <h2>🔐 Générateur de mot de passe</h2>
+
+  <label for="passwordLength">Longueur :</label>
+  <input type="number" id="passwordLength" min="4" max="30" value="12">
+
+  <label>
+    <input type="checkbox" id="includeNumbers" checked>
+    Inclure des chiffres
+  </label>
+
+  <label>
+    <input type="checkbox" id="includeSpecials" checked>
+    Inclure des caractères spéciaux
+  </label>
+
+  <button id="generatePassword">
+    Générer un mot de passe
+  </button>
+
+  <p id="passwordResult"></p>
+</div>
 </button>
 </div>
 </div>
