@@ -302,6 +302,18 @@ const cityForm = document.getElementById("cityForm");
 const formMessage = document.getElementById("formMessage");
 
 // Validation et enregistrement du formulaire
+const ctx = document.getElementById("countryChart");
+
+const countryChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: ["Maroc", "Algérie", "Tunisie"],
+        datasets: [{
+            label: "Nombre de suggestions",
+            data: [0,0,0]
+        }]
+    }
+});
 cityForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -330,6 +342,22 @@ cityForm.addEventListener("submit", function(event) {
   };
 
   suggestions.push(suggestion);
+    const marocCount =
+suggestions.filter(s => s.pays === "Maroc").length;
+
+const algerieCount =
+suggestions.filter(s => s.pays === "Algérie").length;
+
+const tunisieCount =
+suggestions.filter(s => s.pays === "Tunisie").length;
+
+countryChart.data.datasets[0].data = [
+marocCount,
+algerieCount,
+tunisieCount
+];
+
+countryChart.update();
 
   formMessage.style.color = "#22c55e";
   formMessage.innerHTML =
