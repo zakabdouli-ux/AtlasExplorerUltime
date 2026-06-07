@@ -291,39 +291,6 @@ if (visitorName && visitorName.trim() !== "") {
   alert("Bienvenue sur Atlas Explorer !");
 }
 
-// ================= FORMULAIRE + VALIDATION JS + DOM =================
-
-const cityForm = document.getElementById("cityForm");
-const formMessage = document.getElementById("formMessage");
-
-cityForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const cityName = document.getElementById("cityName").value.trim();
-  const countryName = document.getElementById("countryName").value;
-  const reason = document.getElementById("reason").value.trim();
-
-  if (cityName === "" || countryName === "" || reason === "") {
-    formMessage.style.color = "#ef4444";
-    formMessage.innerHTML = "Erreur : merci de remplir tous les champs.";
-    alert("Le formulaire est incomplet.");
-    return;
-  }
-
-  if (reason.length < 20) {
-    formMessage.style.color = "#f97316";
-    formMessage.innerHTML = "La description doit contenir au moins 20 caractères.";
-    alert("Ta description est trop courte.");
-    return;
-  }
-
-  formMessage.style.color = "#22c55e";
-  formMessage.innerHTML =
-    "Merci ! La ville de <strong>" + cityName + "</strong> en <strong>" + countryName + "</strong> a bien été proposée.";
-
-  alert("Suggestion envoyée avec succès !");
-  cityForm.reset();
-});
 // ================= ÉTAPE 2 : FORMULAIRE INTERACTIF =================
 
 // Tableau qui stocke les données du formulaire
