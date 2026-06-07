@@ -1,5 +1,5 @@
 // ================= CARTE =================
-console.log("VERSION TEST 123");
+
 const map = L.map('map').setView([31,5],5);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -402,5 +402,49 @@ document.getElementById("exportExcel").addEventListener("click", function () {
         workbook,
         "AtlasExplorerSuggestions.xlsx"
     );
+
+});
+
+// ================= GÉNÉRATEUR DE MOT DE PASSE =================
+
+document.getElementById("generatePassword").addEventListener("click", function () {
+
+  const length = parseInt(document.getElementById("passwordLength").value);
+
+  const includeNumbers =
+  document.getElementById("includeNumbers").checked;
+
+  const includeSpecials =
+  document.getElementById("includeSpecials").checked;
+
+  const result =
+  document.getElementById("passwordResult");
+
+  let characters =
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  if (includeNumbers) {
+    characters += "0123456789";
+  }
+
+  if (includeSpecials) {
+    characters += "!@#$%^&*()_+-=[]{};:,.<>?";
+  }
+
+  if (length < 4 || length > 30) {
+    result.textContent =
+    "Choisis une longueur entre 4 et 30";
+    return;
+  }
+
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+    password +=
+    characters[Math.floor(Math.random() * characters.length)];
+  }
+
+  result.textContent =
+  "Mot de passe : " + password;
 
 });
