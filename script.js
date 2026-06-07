@@ -1,4 +1,5 @@
 // ================= CARTE =================
+console.log("VERSION TEST 123");
 const map = L.map('map').setView([31,5],5);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
