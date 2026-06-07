@@ -342,6 +342,10 @@ cityForm.addEventListener("submit", function(event) {
   };
 
   suggestions.push(suggestion);
+localStorage.setItem(
+  "suggestions",
+  JSON.stringify(suggestions)
+);
     const marocCount =
 suggestions.filter(s => s.pays === "Maroc").length;
 
