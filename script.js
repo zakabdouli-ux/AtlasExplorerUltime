@@ -152,7 +152,7 @@ fetch('./countries.geo.json')
   .then(res => res.json())
   .then(data => {
 
-    console.log("GeoJSON chargé :", data); // debug
+    console.log("GeoJSON chargé :", data); 
 
     L.geoJSON(data, {
 
@@ -181,7 +181,7 @@ fetch('./countries.geo.json')
 
           console.log("CLICK PROPERTIES :", feature.properties);
 
-          // récupère le bon nom (robuste)
+          // récupère le bon nom 
           const rawName =
             feature.properties.ADMIN ||
             feature.properties.name ||
@@ -292,16 +292,15 @@ if (visitorName && visitorName.trim() !== "") {
   alert("Bienvenue sur Atlas Explorer !");
 }
 
-// ================= ÉTAPE 2 : FORMULAIRE INTERACTIF =================
+// ================= FORMULAIRE INTERACTIF =================
 
-// Tableau qui stocke les données du formulaire
+
 let suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
 
-// Récupération des éléments HTML
 const cityForm = document.getElementById("cityForm");
 const formMessage = document.getElementById("formMessage");
 
-// Validation et enregistrement du formulaire
+
 const marocCount =
 suggestions.filter(s => s.pays === "Maroc").length;
 
