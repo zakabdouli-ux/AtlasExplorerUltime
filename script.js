@@ -295,7 +295,7 @@ if (visitorName && visitorName.trim() !== "") {
 // ================= ÉTAPE 2 : FORMULAIRE INTERACTIF =================
 
 // Tableau qui stocke les données du formulaire
-let suggestions = [];
+let suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
 
 // Récupération des éléments HTML
 const cityForm = document.getElementById("cityForm");
