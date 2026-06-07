@@ -386,3 +386,21 @@ countryChart.update();
 
   cityForm.reset();
 });
+document.getElementById("exportExcel").addEventListener("click", function () {
+
+    const worksheet = XLSX.utils.json_to_sheet(suggestions);
+
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Suggestions"
+    );
+
+    XLSX.writeFile(
+        workbook,
+        "AtlasExplorerSuggestions.xlsx"
+    );
+
+});
